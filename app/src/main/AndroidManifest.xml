@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/dp"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FO"
+        tools:targetApi="31">
+        <activity
+            android:name=".Salary"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_salary"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".Visa_Application"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_visa_application"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".Attandance"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_attandance"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".MediaTalk"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_media_talk"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".Resolution"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_resolution"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".Save_New"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_save_new"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".Receive_Cypher"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_receive_cypher"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".SendCypher"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_send_cypher"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".MainMenuuu"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_main_menuuu"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".ViewReports"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_view_reports"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".AddString"
+            android:exported="false" />
+        <activity
+            android:name=".Addprogress"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_addprogress"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.FO.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

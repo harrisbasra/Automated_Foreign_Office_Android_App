@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FO</string>
+    <string name="Welcome">Welcome</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main_menuuu">MainMenuuu</string>
+    <string name="title_activity_send_cypher">SendCypher</string>
+    <string name="title_activity_receive_cypher">Receive_Cypher</string>
+    <string name="title_activity_save_new">Save_New</string>
+    <string name="title_activity_resolution">Resolution</string>
+    <string name="title_activity_media_talk">MediaTalk</string>
+    <string name="title_activity_attandance">Attandance</string>
+    <string name="title_activity_visa_application">Visa_Application</string>
+    <string name="title_activity_salary">Salary</string>
+    <string name="title_activity_addprogress">AddProgress</string>
+    <string name="title_activity_view_reports">ViewReports</string>
+</resources>
