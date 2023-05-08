@@ -29,23 +29,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.078" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="4dp"
-            android:layout_height="0dp"
-            android:gravity="center_vertical"
-            android:text="TextView"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.174"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.249" />
 
-        <Spinner
+        <EditText
             android:id="@+id/spinnerA"
             android:layout_width="303dp"
             android:layout_height="57dp"
@@ -53,7 +38,8 @@
             android:ems="10"
             android:hapticFeedbackEnabled="true"
             android:spinnerMode="dialog"
-            android:text="Name Of Country"
+            android:hint="Name Of Country"
+            android:padding="10sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -66,11 +52,11 @@
         <EditText
             android:id="@+id/cypher"
             android:layout_width="303dp"
-            android:layout_height="263dp"
+            android:layout_height="350dp"
             android:background="@drawable/buttonround"
             android:ems="10"
             android:gravity="clip_horizontal"
-            android:hint="Enter Text Here"
+            android:hint="Enter Additional Text Here"
             android:inputType="textMultiLine"
             android:padding="15sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -80,7 +66,7 @@
             app:layout_constraintHorizontal_bias="0.435"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.685" />
+            app:layout_constraintVertical_bias="0.63" />
 
         <Button
             android:id="@+id/button111234567890"
@@ -94,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.888" />
+            app:layout_constraintVertical_bias="0.898" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
