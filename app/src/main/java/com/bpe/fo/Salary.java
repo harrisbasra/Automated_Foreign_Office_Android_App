@@ -5,6 +5,8 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,21 +14,15 @@ import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.bpe.fo.databinding.ActivitySalaryBinding;
-
-import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.Headers;
-import retrofit2.http.POST;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-
-
 public class Salary extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -46,29 +42,14 @@ public class Salary extends AppCompatActivity {
      */
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler(Looper.myLooper());
-    private View mContentView;
+
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
         public void run() {
-            // Delayed removal of status and navigation bar
-            if (Build.VERSION.SDK_INT >= 30) {
-                mContentView.getWindowInsetsController().hide(
-                        WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
-            } else {
-                // Note that some of these constants are new as of API 16 (Jelly Bean)
-                // and API 19 (KitKat). It is safe to use them, as they are inlined
-                // at compile-time and do nothing on earlier devices.
-                mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-            }
+
         }
     };
-    private View mControlsView;
     private final Runnable mShowPart2Runnable = new Runnable() {
         @Override
         public void run() {
@@ -77,7 +58,6 @@ public class Salary extends AppCompatActivity {
             if (actionBar != null) {
                 actionBar.show();
             }
-            mControlsView.setVisibility(View.VISIBLE);
         }
     };
     private boolean mVisible;
@@ -120,19 +100,40 @@ public class Salary extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mVisible = true;
-        mControlsView = binding.fullscreenContentControls;
-        mContentView = binding.fullscreenContent;
 
-        // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
+        String RoomType[] = {"Google Pay", "EasyPaisa", "JazzCash"};
+        ArrayAdapter<String> roomType = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, RoomType);
+        binding.cypher4.setAdapter(roomType);
+
+        binding.button11.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                toggle();
+            public void onClick(View v) {
+                Uri uri;
+                uri = new Uri.Builder()
+                        .scheme("upi")
+                        .authority("pay")
+                        .appendQueryParameter("pa", "BCR2DN4TXLUNTMKH")       // virtual ID
+                        .appendQueryParameter("pn", "HarrisBasra")          // name
+                        .appendQueryParameter("tn", "Hotolights")       // any note about payment
+                        .appendQueryParameter("am", String.valueOf("500"))           // amount
+                        .appendQueryParameter("cu", "PKR")                         // currency
+                        .build();
+                Intent upiPayIntent = new Intent(Intent.ACTION_VIEW);
+                upiPayIntent.setData(uri);
+// will always show a dialog to user to choose an app
+                Intent chooser = Intent.createChooser(upiPayIntent, "Pay with");
+// check if intent resolves
+                if(null != chooser.resolveActivity(getPackageManager())) {
+                    int UPI_PAYMENT = 0;
+                    startActivityForResult(chooser, UPI_PAYMENT);
+                } else {
+                    Toast.makeText(Salary.this,"No UPI app found, please install one to continue",Toast.LENGTH_SHORT).show();
+                }
+
+                Toast.makeText(Salary.this, "Payment Successfully Transferred to Selected Application", Toast.LENGTH_SHORT).show();
+
             }
         });
-      
-
-
     }
 
     @Override
@@ -145,13 +146,6 @@ public class Salary extends AppCompatActivity {
         delayedHide(100);
     }
 
-    private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
-        }
-    }
 
     private void hide() {
         // Hide UI first
@@ -159,7 +153,6 @@ public class Salary extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
         // Schedule a runnable to remove the status and navigation bar after a delay
@@ -167,26 +160,7 @@ public class Salary extends AppCompatActivity {
         mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
     }
 
-    private void show() {
-        // Show the system bar
-        if (Build.VERSION.SDK_INT >= 30) {
-            mContentView.getWindowInsetsController().show(
-                    WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
-        } else {
-            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
-        }
-        mVisible = true;
 
-        // Schedule a runnable to display UI elements after a delay
-        mHideHandler.removeCallbacks(mHidePart2Runnable);
-        mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
-    }
-
-    /**
-     * Schedules a call to hide() in delay milliseconds, canceling any
-     * previously scheduled calls.
-     */
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);

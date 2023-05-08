@@ -125,7 +125,7 @@ public class SendCypher extends AppCompatActivity {
         ConstraintLayout frameLayout = findViewById(R.id.cl);
 
         Glide.with(this)
-                .load("https://images.unsplash.com/photo-1576731753569-3e93a228048c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
+                .load("https://images.unsplash.com/photo-1532449637670-ba23a300b8ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80")
                 .placeholder(R.color.teal_200) // Placeholder image until the image is loaded
                 .error(R.color.light_blue_600) // Error image if the image fails to load
                 .into(new CustomViewTarget<ConstraintLayout, Drawable>(frameLayout) {

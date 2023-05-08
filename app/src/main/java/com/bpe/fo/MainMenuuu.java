@@ -152,6 +152,7 @@ public class MainMenuuu extends AppCompatActivity {
         t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //---------------------------------------- 100% (Work on Background)
                 Intent i = new Intent(MainMenuuu.this, SendCypher.class);
                 startActivity(i);
             }
@@ -159,6 +160,7 @@ public class MainMenuuu extends AppCompatActivity {
         t2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //---------------------------------------- 0%  (Think about the idea)
                 Intent i = new Intent(MainMenuuu.this, Receive_Cypher.class);
                 startActivity(i);
             }
@@ -166,6 +168,7 @@ public class MainMenuuu extends AppCompatActivity {
         t3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //---------------------------------------- 100% (Work on Background)
                 Intent i = new Intent(MainMenuuu.this, Save_New.class);
                 startActivity(i);
             }
@@ -173,6 +176,7 @@ public class MainMenuuu extends AppCompatActivity {
         t4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //---------------------------------------- 0%
                 Intent i = new Intent(MainMenuuu.this, Resolution.class);
                 startActivity(i);
             }
@@ -180,6 +184,7 @@ public class MainMenuuu extends AppCompatActivity {
         t5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //---------------------------------------- 0%
                 Intent i = new Intent(MainMenuuu.this, MediaTalk.class);
                 startActivity(i);
             }
@@ -187,6 +192,7 @@ public class MainMenuuu extends AppCompatActivity {
         t6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //---------------------------------------- 100%
                 Intent i = new Intent(MainMenuuu.this, Attandance.class);
                 startActivity(i);
             }
@@ -194,6 +200,7 @@ public class MainMenuuu extends AppCompatActivity {
         t7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //---------------------------------------- 0%
                 Intent i = new Intent(MainMenuuu.this, Visa_Application.class);
                 startActivity(i);
             }
@@ -201,6 +208,7 @@ public class MainMenuuu extends AppCompatActivity {
         t8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //---------------------------------------- 100%
                 Intent i = new Intent(MainMenuuu.this, Salary.class);
                 startActivity(i);
             }

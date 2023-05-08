@@ -19,7 +19,7 @@
             android:layout_height="101dp"
             android:background="@drawable/bothsidesroundb"
             android:gravity="center"
-            android:text="RECEIVE CYPHER"
+            android:text="VIEW CYPHERS"
             android:textColor="#D5C5C5"
             android:textSize="34sp"
             android:textStyle="bold"
