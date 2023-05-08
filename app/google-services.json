@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "625009905733",
+    "project_id": "automatedforeignoffice",
+    "storage_bucket": "automatedforeignoffice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625009905733:android:232b831236dceb851ed32c",
+        "android_client_info": {
+          "package_name": "com.bpe.fo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625009905733-ijrhud0ui8sionlqhnunnv2k8635j7qi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bpe.fo",
+            "certificate_hash": "07184a3030ee1536ff81370094ec42985c44a01d"
+          }
+        },
+        {
+          "client_id": "625009905733-ip4p81vr5bjor801mdbi77pglrd6e3ns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCxMAiD6d9-DQHAM-_5c0NFh4vmHn_kRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625009905733-ip4p81vr5bjor801mdbi77pglrd6e3ns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

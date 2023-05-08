@@ -110,7 +110,7 @@ public class FullscreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startActivity(new Intent(FullscreenActivity.this, Save_New.class));
+        startActivity(new Intent(FullscreenActivity.this, Resolution.class));
 
         binding = ActivityFullscreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

@@ -14,4 +14,9 @@
     <string name="title_activity_salary">Salary</string>
     <string name="title_activity_addprogress">AddProgress</string>
     <string name="title_activity_view_reports">ViewReports</string>
+    <string name="title_activity_visa">VISA_A</string>
+    <string name="title_activity_visa_b">VISA_B</string>
+    <string name="title_activity_visa_c">VISA_C</string>
+    <string name="title_activity_visa_d">VISA_D</string>
+    <string name="title_activity_send_request">SendRequest</string>
 </resources>

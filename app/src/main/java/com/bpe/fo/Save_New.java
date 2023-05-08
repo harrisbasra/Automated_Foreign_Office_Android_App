@@ -2,11 +2,15 @@ package com.bpe.fo;
 
 import android.annotation.SuppressLint;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,8 +18,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bpe.fo.databinding.ActivitySaveNewBinding;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.FileInputStream;
@@ -104,6 +112,28 @@ public class Save_New extends AppCompatActivity {
         ActivitySaveNewBinding binding = ActivitySaveNewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        ConstraintLayout frameLayout = findViewById(R.id.cl);
+
+        Glide.with(this)
+                .load(R.color.black)
+                .placeholder(R.color.teal_200) // Placeholder image until the image is loaded
+                .error(R.color.light_blue_600) // Error image if the image fails to load
+                .into(new CustomViewTarget<ConstraintLayout, Drawable>(frameLayout) {
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                        Toast.makeText(Save_New.this, "Load Failed", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        getView().setBackground(resource);
+                    }
+
+                    @Override
+                    protected void onResourceCleared(@Nullable Drawable placeholder) {
+                        // handle resource cleared
+                    }
+                });
         EditText t1 = findViewById(R.id.spinnerA);
         EditText specialtext = findViewById(R.id.editTextTextPersonName6);
         EditText t2 = findViewById(R.id.cypher);

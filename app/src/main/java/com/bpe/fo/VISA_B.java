@@ -2,10 +2,11 @@ package com.bpe.fo;
 
 import android.annotation.SuppressLint;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,22 +14,32 @@ import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bpe.fo.databinding.ActivityMediaTalkBinding;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.bpe.fo.databinding.ActivityAddprogressBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.bpe.fo.databinding.ActivityAttandanceBinding;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class MediaTalk extends AppCompatActivity {
+public class VISA_B extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -111,39 +122,124 @@ public class MediaTalk extends AppCompatActivity {
             return false;
         }
     };
-    private ActivityMediaTalkBinding binding;
+    private ActivityAddprogressBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMediaTalkBinding.inflate(getLayoutInflater());
+        binding = ActivityAddprogressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         mVisible = true;
         mControlsView = binding.fullscreenContentControls;
         mContentView = binding.fullscreenContent;
 
-        FirebaseApp.initializeApp(MediaTalk.this);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Med");
-        myRef.setValue("Not On Good Relations With India | China Promised $2Bn ");
-
-
-
-
-        DatabaseReference messageRef = database.getReference("Med");
-        messageRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        // Set up the user interaction to manually show or hide the system UI.
+        mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String message = dataSnapshot.getValue(String.class);
-                String AllRes[] = message.split("\\|");
-                ArrayAdapter<String> arr = new ArrayAdapter<String>(MediaTalk.this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, AllRes);
-                binding.lvlv.setAdapter(arr);
+            public void onClick(View view) {
+                toggle();
             }
+        });
+
+        // Upon interacting with UI controls, delay any scheduled hide()
+        // operations to prevent the jarring behavior of controls going away
+        // while interacting with the UI.
+        FloatingActionButton fb = (FloatingActionButton) findViewById(R.id.floatingActionButton3);
+        fb.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MediaTalk.this, "Failed", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                Intent k = new Intent(VISA_B.this, VISA_C.class);
+                startActivity(k);
+            }
+        });
+        Date h = new Date();
+        String A = String.valueOf(h.getDate());
+        String B = String.valueOf(h.getMonth());
+        String F = "Today,  "+A+"-"+B+"-"+"2022";
+        TextView textVew = findViewById(R.id.textView5);
+        TextView t220037 = findViewById(R.id.textView6);
+        textVew.setText(F);
+        ArrayOfStuff obj = new ArrayOfStuff();
+        //........................../////////////////////////////////////...............................///////////////////////////////////////////////
+        try {
+            FileInputStream fin = openFileInput("V1.txt");
+            int a;
+            StringBuilder temp = new StringBuilder();
+            while ((a = fin.read()) != -1) {
+                temp.append((char)a);
+            }
+            obj.arr = temp.toString();
+            fin.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        ///////////////////////////////////////////////////////////////////
+        try {
+            FileInputStream fin = openFileInput("V2.txt");
+            int a2;
+            StringBuilder temp2 = new StringBuilder();
+            while ((a2 = fin.read()) != -1) {
+                temp2.append((char)a2);
+            }
+            obj.valarr = temp2.toString();
+
+            fin.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        /////////////////////////////////////////////////////
+        ListView l11007 = findViewById(R.id.lv);
+        ArrayAdapter<String> arr;
+        final int[] selected = {-1};
+        if(obj.arrayreturner()!=null){
+            arr= new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, obj.arrayreturner()  );
+            l11007.setAdapter(arr);
+            l11007.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    t220037.setText(obj.arrayreturner()[i].toString());
+                    selected[0] = i;
+                }
+            });
+        }
+        /////////////////////////////////////////////////////
+        Button b2001173 = findViewById(R.id.button2);
+        b2001173.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(selected[0]>=0){
+
+                    obj.MarkADay(h.getDate(), selected[0]);
+                    /////////////////////////////
+                    FileOutputStream fos = null;
+                    String AAAA = obj.valarr;
+
+                    try {
+                        fos = openFileOutput("V2.txt", Context.MODE_PRIVATE);
+                        fos.write(AAAA.getBytes());
+                        fos.flush();
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    ///////////////////////////////
+                    Toast.makeText(VISA_B.this, obj.arrayreturner()[selected[0]].toString()+" marked done for "+ F, Toast.LENGTH_SHORT).show();
+                    t220037.setText(t220037.getText()+" ✔️");
+                }
+                else{
+                    Snackbar.make(view, "Select a Word First", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
+            }
+        });
+        FloatingActionButton fab20037 = findViewById(R.id.floatingActionButton2);
+        fab20037.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Feature Coming Soon...!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 
@@ -160,11 +256,7 @@ public class MediaTalk extends AppCompatActivity {
     }
 
     private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
-        }
+
     }
 
     private void hide() {

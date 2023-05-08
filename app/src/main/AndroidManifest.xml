@@ -14,16 +14,40 @@
         android:theme="@style/Theme.FO"
         tools:targetApi="31">
         <activity
+            android:name=".SendRequest"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_send_request"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".VISA_D"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_visa_d"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".VISA_C"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_visa_c"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".VISA_B"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_visa_b"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
+            android:name=".VISA_A"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_visa"
+            android:theme="@style/Theme.FO.Fullscreen" />
+        <activity
             android:name=".Salary"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_salary"
-            android:theme="@style/Theme.FO.Fullscreen" />
-        <activity
-            android:name=".Visa_Application"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="false"
-            android:label="@string/title_activity_visa_application"
             android:theme="@style/Theme.FO.Fullscreen" />
         <activity
             android:name=".Attandance"

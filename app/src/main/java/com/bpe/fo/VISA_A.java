@@ -2,33 +2,34 @@ package com.bpe.fo;
 
 import android.annotation.SuppressLint;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.CalendarContract;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bpe.fo.databinding.ActivityMediaTalkBinding;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.bpe.fo.databinding.ActivityAttandanceBinding;
+import com.bpe.fo.databinding.ActivityVisaABinding;
+
+import java.sql.Date;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class MediaTalk extends AppCompatActivity {
+public class VISA_A extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -111,41 +112,55 @@ public class MediaTalk extends AppCompatActivity {
             return false;
         }
     };
-    private ActivityMediaTalkBinding binding;
+    private ActivityVisaABinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMediaTalkBinding.inflate(getLayoutInflater());
+        binding = ActivityVisaABinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         mVisible = true;
         mControlsView = binding.fullscreenContentControls;
         mContentView = binding.fullscreenContent;
 
-        FirebaseApp.initializeApp(MediaTalk.this);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Med");
-        myRef.setValue("Not On Good Relations With India | China Promised $2Bn ");
-
-
-
-
-        DatabaseReference messageRef = database.getReference("Med");
-        messageRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        // Set up the user interaction to manually show or hide the system UI.
+        mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String message = dataSnapshot.getValue(String.class);
-                String AllRes[] = message.split("\\|");
-                ArrayAdapter<String> arr = new ArrayAdapter<String>(MediaTalk.this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, AllRes);
-                binding.lvlv.setAdapter(arr);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MediaTalk.this, "Failed", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                toggle();
             }
         });
+//        Date t = new Date();
+//        String A = toTimeStr(t);
+//        TextView timee = (TextView) findViewById(R.id.textView);
+//        TextView timee2 = (TextView) findViewById(R.id.textView2);
+//        timee2.setText(A);
+        BatteryManager bm = (BatteryManager)getSystemService(BATTERY_SERVICE);
+        int percentage = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
+        if(percentage<=20){
+            Toast.makeText(this, "Turn Battery Saver ON...!", Toast.LENGTH_SHORT).show();
+        }
+        //.................................................................
+        Button i1 = findViewById(R.id.imageView);
+        i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent hi = new Intent(VISA_A.this, VISA_B.class);
+                startActivity(hi);
+            }
+        });
+        //.................................................................
+        Button i2 = findViewById(R.id.imageView2);
+        i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i40083 = new Intent(VISA_A.this, VISA_D.class);
+                startActivity(i40083);
+            }
+        });
+        //..................................................................
 
     }
 

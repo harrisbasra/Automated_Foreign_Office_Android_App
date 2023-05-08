@@ -13,13 +13,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowInsets;
 
-import com.bpe.fo.databinding.ActivityVisaApplicationBinding;
+import com.bpe.fo.databinding.ActivitySendRequestBinding;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class Visa_Application extends AppCompatActivity {
+public class SendRequest extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -102,13 +102,13 @@ public class Visa_Application extends AppCompatActivity {
             return false;
         }
     };
-    private ActivityVisaApplicationBinding binding;
+    private ActivitySendRequestBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityVisaApplicationBinding.inflate(getLayoutInflater());
+        binding = ActivitySendRequestBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         mVisible = true;
@@ -123,7 +123,10 @@ public class Visa_Application extends AppCompatActivity {
             }
         });
 
-
+        // Upon interacting with UI controls, delay any scheduled hide()
+        // operations to prevent the jarring behavior of controls going away
+        // while interacting with the UI.
+        binding.dummyButton.setOnTouchListener(mDelayHideTouchListener);
     }
 
     @Override
