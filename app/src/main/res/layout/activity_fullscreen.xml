@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/img"
+  android:background="@color/black"
     android:foregroundGravity="center"
     android:theme="@style/ThemeOverlay.FO.FullscreenContainer"
     app:layout_anchorGravity="center"
     tools:context=".FullscreenActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -19,10 +20,10 @@
             android:id="@+id/textView"
             android:layout_width="318dp"
             android:layout_height="101dp"
+            android:background="@drawable/roundbb"
             android:gravity="center"
             android:text="FOREIGN OFFICE"
-            android:background="@drawable/rounfdmafe"
-            android:textColor="#D5C5C5"
+            android:textColor="#000000"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -31,13 +32,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.078" />
 
-        <Button
+        <TextView
             android:id="@+id/button"
             android:layout_width="280dp"
             android:layout_height="68dp"
-            android:background="@drawable/edittextrounder"
+            android:background="@drawable/roundbb"
+            android:gravity="center"
             android:text="LOG IN"
             android:textColor="#000000"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -45,14 +48,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.778" />
 
-        <Button
+        <TextView
             android:id="@+id/button2"
             android:layout_width="280dp"
             android:layout_height="68dp"
-            android:backgroundTint="@android:color/white"
-            android:background="@drawable/edittextrounder"
+            android:background="@drawable/roundbb"
+            android:gravity="center"
             android:text="SIGN UP"
             android:textColor="#000000"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -86,8 +90,8 @@
             android:background="@drawable/edittextrounder"
             android:ems="10"
             android:gravity="center"
-            android:inputType="textEmailAddress"
             android:hint="Email Address"
+            android:inputType="textEmailAddress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.557"
@@ -102,8 +106,8 @@
             android:background="@drawable/edittextrounder"
             android:ems="10"
             android:gravity="center"
-            android:inputType="phone"
             android:hint="Phone Number"
+            android:inputType="phone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.557"
@@ -118,8 +122,8 @@
             android:background="@drawable/edittextrounder"
             android:ems="10"
             android:gravity="center"
-            android:inputType="textPassword"
             android:hint="New Password"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.557"

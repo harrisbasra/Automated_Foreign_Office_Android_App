@@ -3,9 +3,12 @@ package com.bpe.fo;
 import android.annotation.SuppressLint;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +20,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.bpe.fo.databinding.ActivityMediaTalkBinding;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -129,6 +135,29 @@ public class MediaTalk extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("Med");
         myRef.setValue("Not On Good Relations With India | China Promised $2Bn ");
 
+
+        ConstraintLayout frameLayout = findViewById(R.id.cl);
+
+        Glide.with(this)
+                .load("https://images.unsplash.com/photo-1516410529446-2c777cb7366d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
+                .placeholder(R.color.teal_200) // Placeholder image until the image is loaded
+                .error(R.color.light_blue_600) // Error image if the image fails to load
+                .into(new CustomViewTarget<ConstraintLayout, Drawable>(frameLayout) {
+                    @Override
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                        Toast.makeText(MediaTalk.this, "Load Failed", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        getView().setBackground(resource);
+                    }
+
+                    @Override
+                    protected void onResourceCleared(@Nullable Drawable placeholder) {
+                        // handle resource cleared
+                    }
+                });
 
 
 
